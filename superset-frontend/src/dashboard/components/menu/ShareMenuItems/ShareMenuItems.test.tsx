@@ -43,7 +43,7 @@ beforeAll((): void => {
   // @ts-ignore
   delete window.location;
   fetchMock.post(
-    'http://34.88.95.164:8088/r/shortner/',
+    'http://34.88.95.164/r/shortner/',
     { body: 'http://34.88.95.164:8088/r/3' },
     {
       sendAsJson: false,
@@ -164,7 +164,7 @@ test('Click on "Share dashboard by email" and succeed', async () => {
 
 test('Click on "Share dashboard by email" and fail', async () => {
   fetchMock.post(
-    'http://34.88.95.164:8088/r/shortner/',
+    'http://34.88.95.164/r/shortner/',
     { status: 404 },
     { overwriteRoutes: true },
   );
