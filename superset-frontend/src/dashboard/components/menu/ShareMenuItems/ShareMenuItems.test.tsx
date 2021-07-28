@@ -43,8 +43,8 @@ beforeAll((): void => {
   // @ts-ignore
   delete window.location;
   fetchMock.post(
-    'http://34.88.95.164/r/shortner/',
-    { body: 'http://34.88.95.164/r/3' },
+    'http://34.88.95.164:8088/r/shortner/',
+    { body: 'http://34.88.95.164:8088/r/3' },
     {
       sendAsJson: false,
     },
@@ -102,7 +102,7 @@ test('Click on "Copy dashboard URL" and succeed', async () => {
 
   await waitFor(() => {
     expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith('http://34.88.95.164/r/3');
+    expect(spy).toBeCalledWith('http://34.88.95.164:8088/r/3');
     expect(props.addSuccessToast).toBeCalledTimes(1);
     expect(props.addSuccessToast).toBeCalledWith('Copied to clipboard!');
     expect(props.addDangerToast).toBeCalledTimes(0);
@@ -128,7 +128,7 @@ test('Click on "Copy dashboard URL" and fail', async () => {
 
   await waitFor(() => {
     expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith('http://34.88.95.164/r/3');
+    expect(spy).toBeCalledWith('http://34.88.95.164:8088/r/3');
     expect(props.addSuccessToast).toBeCalledTimes(0);
     expect(props.addDangerToast).toBeCalledTimes(1);
     expect(props.addDangerToast).toBeCalledWith(
@@ -157,14 +157,14 @@ test('Click on "Share dashboard by email" and succeed', async () => {
   await waitFor(() => {
     expect(props.addDangerToast).toBeCalledTimes(0);
     expect(window.location.href).toBe(
-      'mailto:?Subject=Superset dashboard COVID Vaccine Dashboard%20&Body=Check out this dashboard: http://34.88.95.164/r/3',
+      'mailto:?Subject=Superset dashboard COVID Vaccine Dashboard%20&Body=Check out this dashboard: http://34.88.95.164:8088/r/3',
     );
   });
 });
 
 test('Click on "Share dashboard by email" and fail', async () => {
   fetchMock.post(
-    'http://34.88.95.164/r/shortner/',
+    'http://34.88.95.164:8088/r/shortner/',
     { status: 404 },
     { overwriteRoutes: true },
   );
