@@ -43,7 +43,7 @@ beforeAll((): void => {
   // @ts-ignore
   delete window.location;
   fetchMock.post(
-    'http://localhost/r/shortner/',
+    'http://34.88.95.164/r/shortner/',
     { body: 'http://34.88.95.164/r/3' },
     {
       sendAsJson: false,
