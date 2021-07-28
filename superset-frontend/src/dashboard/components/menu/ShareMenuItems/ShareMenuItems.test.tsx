@@ -44,7 +44,7 @@ beforeAll((): void => {
   delete window.location;
   fetchMock.post(
     'http://localhost/r/shortner/',
-    { body: 'http://localhost:8088/r/3' },
+    { body: 'http://34.88.95.164/r/3' },
     {
       sendAsJson: false,
     },
@@ -102,7 +102,7 @@ test('Click on "Copy dashboard URL" and succeed', async () => {
 
   await waitFor(() => {
     expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith('http://localhost:8088/r/3');
+    expect(spy).toBeCalledWith('http://34.88.95.164/r/3');
     expect(props.addSuccessToast).toBeCalledTimes(1);
     expect(props.addSuccessToast).toBeCalledWith('Copied to clipboard!');
     expect(props.addDangerToast).toBeCalledTimes(0);
@@ -128,7 +128,7 @@ test('Click on "Copy dashboard URL" and fail', async () => {
 
   await waitFor(() => {
     expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith('http://localhost:8088/r/3');
+    expect(spy).toBeCalledWith('http://34.88.95.164/r/3');
     expect(props.addSuccessToast).toBeCalledTimes(0);
     expect(props.addDangerToast).toBeCalledTimes(1);
     expect(props.addDangerToast).toBeCalledWith(
